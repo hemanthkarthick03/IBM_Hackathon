@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>IBM Hackathon</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/index.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts Link For Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="{{ url_for('static', filename= 'js/script.js') }}" defer></script>
+    
+</head>
+    <body>
+        <!-- Navbar -->
+        <div class="navbar">
+            <h3>IHC Beta Caption Generator</h3>
+        </div>
+
+        <!-- Chats container -->
+        <div class="chat-container"></div>
+
+        <!-- Typing container -->
+        <div class="typing-container">
+            <div class="typing-content">
+                <!-- Add the media upload input -->
+
+                <div class="media-upload">
+                    <input type="file" id="media-upload-input" accept="image/*, video/*">
+                    <label for="media-upload-input" class="material-symbols-rounded">Upload</label>
+                    
+                </div>
+                <div class="typing-textarea">
+                    <textarea id="chat-input" spellcheck="false" placeholder="Enter a prompt here" required></textarea>
+                    <span id="send-btn" class="material-symbols-rounded">send</span>
+                </div>
+                <div class="typing-controls">
+                    <span id="theme-btn" class="material-symbols-rounded">light_mode</span>
+                    <span id="delete-btn" class="material-symbols-rounded">delete</span>
+                </div>
+            </div>
+        </div>
+    </body>
+    <!-- Inside the HTML template -->
+    <script>
+        var userImageUrl = "{{ url_for('static', filename='images/user.jpg') }}";
+        var chatbotImageUrl = "{{ url_for('static', filename='images/chatbot.jpg') }}";
+    </script>
+    <!-- Media Upload Script -->
+    <script>
+        const mediaUploadInput = document.querySelector("#media-upload-input");
+    const uploadButton = document.querySelector("#send-btn"); // Update this selector
+
+    uploadButton.addEventListener("click", handleUploadButtonClick);
+
+    function handleUploadButtonClick() {
+        // Trigger the file input's click event to open the file dialog
+        mediaUploadInput.click();
+    }
+
+    mediaUploadInput.addEventListener("change", handleMediaUpload);
+
+    function handleMediaUpload() {
+        const mediaFile = mediaUploadInput.files[0];
+
+        if (mediaFile) {
+            // You can now handle the uploaded media file here.
+            // For example, you can display a preview, upload it to the server, etc.
+            // You can access the file using the mediaFile variable.
+            // Example: console.log(mediaFile.name);
+        }
+
+        // Clear the input to allow uploading the same file again if needed
+        mediaUploadInput.value = "";
+    }
+
+    </script>
+
+</html>
