@@ -1,2 +1,1 @@
-"# IBM" 
-"# IBM_Hackathon" 
+### SmartInternZ X IBM Hackathon 
